@@ -1,0 +1,3 @@
+[submodule "software-defined-vehicle"]
+	path = software-defined-vehicle
+	url = https://bitbucket.itk-engineering.de/scm/prj-itku_connectivity_demonstrator/software-defined-vehicle.git
