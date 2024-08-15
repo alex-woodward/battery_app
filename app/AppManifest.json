@@ -1,15 +1,67 @@
 {
     "manifestVersion": "v3",
-    "name": "SampleApp",
+    "name": "batteryapp",
     "interfaces": [
         {
             "type": "vehicle-signal-interface",
             "config": {
-                "src": "https://github.com/COVESA/vehicle_signal_specification/releases/download/v4.0/vss_rel_4.0.json",
+                "src": "./software-defined-vehicle/can/vss/battery_vss.json",
                 "datapoints": {
-                    "required": [
+                    "required": [  
                         {
-                            "path": "Vehicle.Speed",
+                            "path": "Vehicle.Powertrain.TractionBattery.Temperature.Average",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Temperature.CellTemperature",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.CellVoltage.CellVoltages",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.GrossCapacity",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.NetCapacity",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.StateOfCharge.Displayed",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.CurrentVoltage",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.CurrentCurrent",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Charging.IsCharging",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Charging.IsCharging",
+                            "access": "write"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Charging.CellIsCharging",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Charging.IsDischarging",
+                            "access": "read"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Charging.IsDischarging",
+                            "access": "write"
+                        },
+                        {
+                            "path": "Vehicle.Powertrain.TractionBattery.Charging.CellIsDischarging",
                             "access": "read"
                         }
                     ]
@@ -20,11 +72,24 @@
             "type": "pubsub",
             "config": {
                 "reads": [
-                    "sampleapp/getSpeed"
+                    "batteryapp/temperature/getAverage",
+                    "batteryapp/cell/getTemperature",
+                    "batteryapp/cell/getVoltage",
+                    "batteryapp/getGrossCapacity",
+                    "batteryapp/getNetCapacity",
+                    "batteryapp/stateOfCharge/getDisplayed",
+                    "batteryapp/getCurrentVoltage",
+                    "batteryapp/getCurrentCurrent",
+                    "batteryapp/charging/getIsCharging",
+                    "batteryapp/cell/getIsCharging",
+                    "batteryapp/charging/getIsDischarging",
+                    "batteryapp/cell/getIsDischarging",
+                    "batteryapp/charging/setIsCharging/response",
+                    "batteryapp/charging/setIsDiscarging/response"
                 ],
                 "writes": [
-                    "sampleapp/getSpeed/response",
-                    "sampleapp/currentSpeed"
+                    "batteryapp/charging/setIsCharging",
+                    "batteryapp/charging/setIsDiscarging"
                 ]
             }
         }
